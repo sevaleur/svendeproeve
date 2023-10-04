@@ -1,0 +1,20 @@
+.preloader
+{
+  @extend %cover;
+
+  background: $color-background;
+
+  display: grid;
+  place-content: center;
+
+  z-index: z('preloader');
+
+  display: none;
+
+  &__img
+  {
+    height: 5rem;
+    width: 5rem;
+
+  }
+}

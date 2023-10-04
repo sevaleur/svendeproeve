@@ -1,0 +1,13 @@
+/*! assets/bg/header_bg_1.jpg */
+
+/*! assets/bg/header_bg_2.jpg */
+
+/*! classes/Page */
+
+/*! data/data */
+
+/*! gsap */
+
+/*!*********************************!*\
+  !*** ./app/pages/home/index.js ***!
+  \*********************************/

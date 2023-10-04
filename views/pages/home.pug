@@ -1,0 +1,50 @@
+extends ../base.pug
+
+block variables
+  - var template = 'home'
+
+block content
+  .home
+    header.home__header
+      .home__header__bg
+        img.home__header__bg__img(src='' alt='dans')
+      .home__header__titles
+        img.home__header__titles__main(src='./assets/icon/Logo.svg')
+        h2.home__header__titles__text='Have a good time'
+        img.home__header__titles__btm(src='./assets/bottom_line.png')
+
+    section.home__welcome
+      .home__welcome__title
+        h2.home__welcome__title__text='Welcome in nightclub'
+      .home__welcome__sections
+        .home__welcome__sections__section
+          img.home__welcome__sections__section__img(src='./assets/content-img/thumb1.jpg')
+          .home__welcome__sections__section__overlay
+            .home__welcome__sections__section__overlay__icon
+              img.home__welcome__sections__section__overlay__icon__img(src='./assets/icon/favicon.png')
+            .home__welcome__sections__section__overlay__title
+              h3.home__welcome__sections__section__overlay__title__text='night club'
+            .home__welcome__sections__section__overlay__desc
+              p.home__welcome__sections__section__overlay__desc__text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices risus ac magna porttitor blandit. Duis vulputate sagittis magna, pulvinar interdum ipsum sollicitudin in. Ut nec urna porta, imperdiet ante ut, luctus felis. Aenean finibus lectus sit amet libero iaculis.'
+        .home__welcome__sections__section
+          img.home__welcome__sections__section__img(src='./assets/content-img/restaurant_1.jpg')
+          .home__welcome__sections__section__overlay
+            .home__welcome__sections__section__overlay__icon
+              img.home__welcome__sections__section__overlay__icon__img(src='./assets/icon/food.png')
+            .home__welcome__sections__section__overlay__title
+              h3.home__welcome__sections__section__overlay__title__text='restaurant'
+            .home__welcome__sections__section__overlay__desc
+              p.home__welcome__sections__section__overlay__desc__text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices risus ac magna porttitor blandit. Duis vulputate sagittis magna, pulvinar interdum ipsum sollicitudin in. Ut nec urna porta, imperdiet ante ut, luctus felis. Aenean finibus lectus sit amet libero iaculis.'
+        .home__welcome__sections__section
+          img.home__welcome__sections__section__img(src='./assets/content-img/thumb2.jpg')
+          .home__welcome__sections__section__overlay
+            .home__welcome__sections__section__overlay__icon
+              img.home__welcome__sections__section__overlay__icon__img(src='./assets/icon/drinks.png')
+            .home__welcome__sections__section__overlay__title
+              h3.home__welcome__sections__section__overlay__title__text='bar'
+            .home__welcome__sections__section__overlay__desc
+              p.home__welcome__sections__section__overlay__desc__text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices risus ac magna porttitor blandit. Duis vulputate sagittis magna, pulvinar interdum ipsum sollicitudin in. Ut nec urna porta, imperdiet ante ut, luctus felis. Aenean finibus lectus sit amet libero iaculis.'
+
+    each obj in events
+      .home__hey
+
