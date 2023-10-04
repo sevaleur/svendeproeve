@@ -99,7 +99,7 @@ export default class Contact extends Page
     })
   }
 
-  submit()
+  async submit()
   {
     this.url = 'http://localhost:4000/contact_messages'
 
@@ -119,7 +119,15 @@ export default class Contact extends Page
           }
         )
 
+        Promise.resolve(this.post.res)
+          .then((res) =>
+          {
+            console.log(res.status)
+          }
+        )
+
         // ANIMATE SUCCESS
+
       }
       else
       {

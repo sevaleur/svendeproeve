@@ -4,12 +4,15 @@ export default class Post
 {
   constructor(url, { ...object })
   {
-    this.post(url, { object })
+    this.url = url
+    this.object = { object }
+
+    this.res = this.post(this.url, this.object)
   }
 
   async post(url, { object })
   {
-    const res = await axios.post(
+    return await axios.post(
       url,
       {
         ...object
@@ -21,7 +24,5 @@ export default class Post
         }
       }
     )
-
-    console.log(res)
   }
 }
