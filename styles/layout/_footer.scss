@@ -1,0 +1,27 @@
+.footer
+{
+  height: 80rem;
+  width: 100%;
+
+  &__background
+  {
+    height: 100%;
+    width: 100%;
+
+    position: relative;
+
+    &__img
+    {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    &__overlay
+    {
+      @extend %cover;
+
+      background: #000000e3;
+    }
+  }
+}

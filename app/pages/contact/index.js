@@ -17,7 +17,7 @@ export default class Contact extends Page
 
     this.status = {
       name: false,
-      mail: false,
+      email: false,
       message: false
     }
 
@@ -33,10 +33,14 @@ export default class Contact extends Page
 
   createElements()
   {
-    this.name = document.querySelector('input.name')
-    this.mail = document.querySelector('input.mail')
-    this.message = document.querySelector('.contact__form__list__item__textarea')
+    this.input = {
+      name: document.querySelector('input.name'),
+      email: document.querySelector('input.mail'),
+      message: document.querySelector('.contact__form__list__item__textarea')
+    }
+
     this.button = document.querySelector('.contact__form__list__item__button')
+    this.notice = document.querySelector('.contact__section__message__text')
 
     this.validateName()
     this.validateMail()
@@ -46,55 +50,59 @@ export default class Contact extends Page
 
   validateName()
   {
-    this.name.addEventListener('input', () =>
+    this.input.name.addEventListener('input', () =>
     {
-      const value = this.name.value.trim()
-
-      if(value)
+      if(this.input.name.value.length > 1)
       {
-        this.sender.name = this.name.value
+        this.sender.name = this.input.name.value
         this.status.name = true
       }
       else
       {
-        //HANDLE ERROREROROROR
+        this.status.name = false
+        gsap.to(this.input.name, { borderColor: '#ff0000', duration: 0.2 })
+        this.input.name.placeholder = 'Please write your name'
+        this.input.name.focus()
       }
     })
   }
 
   validateMail()
   {
-    this.mail.addEventListener('change', () =>
+    this.input.email.addEventListener('change', () =>
     {
-      const status = this.checkMail(this.mail.value)
+      const status = this.checkMail(this.input.email.value)
 
       if(!status)
       {
-        //HANDLE ERROREROROROR
+        gsap.to(this.input.email, { borderColor: '#ff0000', duration: 0.2 })
+        this.input.email.placeholder = 'Your email is required'
+        this.input.email.focus()
+        this.status.email = false
       }
       else
       {
-        this.sender.mail = this.mail.value
-        this.status.mail = true
+        this.sender.mail = this.input.email.value
+        this.status.email = true
       }
-
     })
   }
 
   validateMessage()
   {
-    this.message.addEventListener("input", () =>
+    this.input.message.addEventListener("input", () =>
     {
-      const value = this.message.value.trim()
-
-      if(value)
+      if(this.input.message.value.length > 10)
       {
-        this.sender.message = this.message.value
+        this.sender.message = this.input.message.value
         this.status.message = true
       }
       else
       {
-        //HANDLE ERROREROROROR
+        gsap.to(this.input.message, { borderColor: '#ff0000', duration: 0.2 })
+        this.input.message.placeholder = 'Your message must be at least 10 characters long'
+        this.input.message.focus()
+        this.status.message = false
       }
     })
   }
@@ -107,7 +115,7 @@ export default class Contact extends Page
     {
       e.preventDefault()
 
-      if(this.status.mail && this.status.name && this.status.message)
+      if(this.status.email && this.status.name && this.status.message)
       {
         this.post = new Post(
           this.url,
@@ -122,16 +130,42 @@ export default class Contact extends Page
         Promise.resolve(this.post.res)
           .then((res) =>
           {
-            console.log(res.status)
+            if(res.status === 201)
+            {
+              for(const [k, v] of Object.entries(this.input))
+              {
+                gsap.to(
+                  v,
+                  {
+                    borderColor: '#53a653',
+                    duration: 0.2
+                  }
+                )
+
+                let up_k = k.charAt(0).toUpperCase() + k.slice(1)
+                v.placeholder = `Your ${up_k}`
+                v.value = ''
+              }
+
+              this.notice.innerHTML = `Your message is sent`
+            }
+            else
+            {
+              gsap.to([this.input.name, this.input.email, this.input.message], { borderColor: '#ff0000', duration: 0.2 })
+              this.notice.innerHTML = `Something went wrong`
+            }
           }
         )
-
-        // ANIMATE SUCCESS
 
       }
       else
       {
-        //HANDLE ERRROROROROROR
+        for(const [k, v] of Object.entries(this.status))
+        {
+          !v
+            ? (this.input[k].focus(), this.notice.innerHTML = `Please fill out the form`)
+            : this.notice.innerHTML = `Something went wrong - Please try again`
+        }
       }
     })
   }

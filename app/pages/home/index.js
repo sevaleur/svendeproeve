@@ -13,10 +13,7 @@ export default class Home extends Page
       id: 'home',
       view: '.home',
       viewElements: {
-        overlays: document.querySelectorAll('.home__welcome__sections__section__overlay'),
-        icons: document.querySelectorAll('.home__welcome__sections__section__overlay__icon'),
-        titles: document.querySelectorAll('.home__welcome__sections__section__overlay__title'),
-        descs: document.querySelectorAll('.home__welcome__sections__section__overlay__desc'),
+
       }
     })
 
@@ -38,18 +35,23 @@ export default class Home extends Page
 
   createElements()
   {
+    this.overlays = document.querySelectorAll('.home__welcome__sections__section__overlay')
+    this.icons = document.querySelectorAll('.home__welcome__sections__section__overlay__icon')
+    this.titles = document.querySelectorAll('.home__welcome__sections__section__overlay__title')
+    this.descs = document.querySelectorAll('.home__welcome__sections__section__overlay__desc')
+
     this.createAnimations()
   }
 
   createAnimations()
   {
-    this.viewElements.overlays.forEach((o, i) =>
+    this.overlays.forEach((o, i) =>
     {
       o.addEventListener('mouseenter', () =>
       {
         gsap.fromTo(
-          [this.viewElements.icons[i],
-            this.viewElements.titles[i]],
+          [this.icons[i],
+            this.titles[i]],
           {
             scale: 0
           },
@@ -60,7 +62,7 @@ export default class Home extends Page
         )
 
         gsap.fromTo(
-          this.viewElements.descs[i],
+          this.descs[i],
           {
             x: 100
           },

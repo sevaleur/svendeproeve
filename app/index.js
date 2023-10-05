@@ -12,6 +12,8 @@ export default class App
     this.createNavigation()
     this.createPages()
 
+    this.disableScroll()
+
     this.addEventListeners()
     this.addLinkListeners()
   }
@@ -75,6 +77,8 @@ export default class App
       this.page = this.pages[this.template]
       this.page.create()
 
+      window.scrollTo(0, 0, 'smooth')
+
       this.navigation.createSticky(this.template)
       this.navigation.navigate(this.template)
 
@@ -96,6 +100,14 @@ export default class App
       url: window.location.pathname,
       push: false
     })
+  }
+
+  disableScroll()
+  {
+    if('scrollRestoration' in history)
+    {
+      history.scrollRestoration = 'manual'
+    }
   }
 
   addEventListeners()

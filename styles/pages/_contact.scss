@@ -75,6 +75,17 @@
 
     align-self: center;
     justify-self: center;
+
+    &__message
+    {
+      text-align: center;
+
+      &__text
+      {
+        @extend %desc-26;
+
+      }
+    }
   }
 
   &__form
@@ -98,7 +109,8 @@
           @extend %desc-18;
 
           background: transparent;
-          border: 1px solid $color-text;
+          border: 1px solid;
+          border-color: $color-text;
           color: $color-text;
           padding: 3.2rem 2.4rem;
 
@@ -116,7 +128,8 @@
 
           height: 35.6rem;
           background: transparent;
-          border: 1px solid $color-text;
+          border: 1px solid;
+          border-color: $color-text;
           color: $color-text;
           padding: 3.2rem 2.4rem;
 
@@ -137,7 +150,8 @@
 
           background: transparent;
 
-          border: 1px solid $color-text;
+          border: 1px solid;
+          border-color: $color-text;
           border-right: none;
           border-left: none;
 

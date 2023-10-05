@@ -40,7 +40,6 @@ html
 
 body
 {
-  @extend %cover;
   @extend %desc-16;
 
   font-family: $font-me;
@@ -67,5 +66,5 @@ img
 
 .content
 {
-  @extend %cover;
+
 }

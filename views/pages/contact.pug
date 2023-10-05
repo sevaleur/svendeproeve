@@ -12,14 +12,16 @@ block content
       .contact__header__title
         h1.contact__header__title__text='contact us'
     section.contact__section
+      .contact__section__message
+        h3.contact__section__message__text='Please fill out the form'
       form.contact__form
         ul.contact__form__list
           li.contact__form__list__item
-            input.contact__form__list__item__input.name(type="text" id="name" name="user_name" placeholder='Your Name')
+            input.contact__form__list__item__input.name(required type="text" id="name" name="user_name" placeholder='Your Name')
           li.contact__form__list__item
-            input.contact__form__list__item__input.mail(type="email" id="mail" name="user_email" placeholder='Your Email')
+            input.contact__form__list__item__input.mail(required type="email" id="mail" name="user_email" placeholder='Your Email')
           li.contact__form__list__item
-            textarea.contact__form__list__item__textarea(id="msg" name="user_message" placeholder='Your Comment')
+            textarea.contact__form__list__item__textarea(required minlength='10' id="msg" name="user_message" placeholder='Your Comment')
           li.contact__form__list__item
             input.contact__form__list__item__button(type='submit' value='send')
 
