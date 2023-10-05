@@ -4,16 +4,17 @@ import Post from './Post'
 
 export default class Validation
 {
-  constructor(url, { ...input }, res, err, button, notice, date = false)
+  constructor(url, { ...input }, res, err, button, notice, view, date = false)
   {
+    this.view = view
     this.status = {}
     this.data = {}
 
-    this.validateInput(input)
+    this.validateInput(input, notice)
     this.submit(url, input, date, res, err, button, notice)
   }
 
-  validateInput(input)
+  validateInput(input, notice)
   {
     for(const [k, v] of Object.entries(input))
     {
@@ -58,11 +59,27 @@ export default class Validation
           })
         break
         case 'password':
+          v.addEventListener('input', () =>
+          {
+            let status = this.checkPassword(v.value)
+            if(!status)
+            {
+              gsap.to(v, { borderColor: '#ff0000', duration: 0.2 })
+              v.placeholder = 'Your password is required'
+              v.focus()
+              this.status.password = false
+            }
+            else
+            {
+              this.data.password = v.value
+              this.status.password = true
+              gsap.to(v, { borderColor: 'currentColor', duration: 0.2 })
+            }
+          })
         break
         case 'message':
           v.addEventListener("input", () =>
           {
-            console.log(this.status)
             if(v.value.length > 10)
             {
               this.data.message = v.value
@@ -75,6 +92,25 @@ export default class Validation
               v.placeholder = 'Your message must be at least 10 characters long'
               v.focus()
               this.status.message = false
+            }
+          })
+        break
+        case 'repeat':
+          v.addEventListener('input', () =>
+          {
+            const status = v.value === this.data.password
+            console.log(this.status)
+            if(!status)
+            {
+              gsap.to(v, { borderColor: '#ff0000', duration: 0.2 })
+              v.placeholder = 'The passwords dont match'
+              v.focus()
+              this.status.repeat = false
+            }
+            else
+            {
+              this.status.repeat = true
+              gsap.to(v, { borderColor: 'currentColor', duration: 0.2 })
             }
           })
         break
@@ -91,7 +127,7 @@ export default class Validation
 
   checkPassword(password)
   {
-
+    return /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/.test(password)
   }
 
   submit(url, input, date, res, err, button, notice)
@@ -122,7 +158,7 @@ export default class Validation
         Promise.resolve(this.post.res)
           .then((resolve) =>
           {
-            if(resolve.status === 201)
+            if(resolve.status > 199 && resolve.status < 300)
             {
               for(const [k, v] of Object.entries(input))
               {
@@ -131,23 +167,28 @@ export default class Validation
                 v.placeholder = `Your ${uppercase_key}`
                 v.value = ''
               }
-
               notice.innerHTML = `${res}`
             }
             else
             {
-              for(const k of Object.keys(input))
-              {
-                gsap.to(
-                  k,
-                  {
-                    borderColor: '#ff0000',
-                    duration: 0.2
-                  }
-                )
-              }
-              notice.innerHTML = `${err}`
+              this.submitError(input, notice, err)
             }
+          }
+          ).catch(error =>
+          {
+            for(const k of Object.keys(input))
+            {
+              gsap.to(
+                k,
+                {
+                  borderColor: '#ff0000',
+                  duration: 0.2
+                }
+              )
+            }
+            notice.innerHTML = `${err}`
+
+            console.log(error)
           }
         )
       }

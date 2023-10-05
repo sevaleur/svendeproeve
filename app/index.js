@@ -4,6 +4,7 @@ import Home from 'pages/home'
 import Blog from 'pages/blog'
 import Contact from 'pages/contact'
 import Login from 'pages/login'
+import Register from 'pages/register'
 
 export default class App
 {
@@ -42,7 +43,8 @@ export default class App
       home: new Home(),
       blog: new Blog(),
       contact: new Contact(),
-      login: new Login()
+      login: new Login(),
+      register: new Register()
     }
 
     this.page = this.pages[this.template]

@@ -64,6 +64,13 @@ app.get('/login', async(req, res) =>
   })
 })
 
+app.get('/register', async(req, res) =>
+{
+  res.render('pages/register', {
+
+  })
+})
+
 app.listen(process.env.PORT, () =>
 {
   console.log(`Listening at http://localhost:${process.env.PORT}`)

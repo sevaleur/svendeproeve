@@ -45,7 +45,8 @@ export default class Login extends Page
       'Login succesful',
       'Incorrect email or password',
       this.button,
-      this.notice
+      this.notice,
+      'login'
     )
   }
 

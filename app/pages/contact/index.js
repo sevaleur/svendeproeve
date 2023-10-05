@@ -39,6 +39,8 @@ export default class Contact extends Page
 
   validateInput()
   {
+    let date;
+
     this.validate = new Validation(
       'http://localhost:4000/contact_messages',
       { ...this.input },
@@ -46,6 +48,7 @@ export default class Contact extends Page
       'An error ocurred',
       this.button,
       this.notice,
+      'contact',
       date,
     )
   }

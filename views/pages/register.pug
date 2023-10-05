@@ -1,0 +1,35 @@
+extends ../base.pug
+
+block variables
+  - var template = 'register'
+
+block content
+  .register
+    .header
+      .header__bg
+        img.header__bg__img(src='./assets/bg/footerbg.jpg')
+        .header__bg__overlay
+      .header__title
+        h1.header__title__text='Register'
+
+    section.register__section
+      .register__section__titles
+        h3.register__section__titles__main.
+          night#[span.red club] is members only
+        p.register__section__titles__sub='Fill out the form below to register a membership.'
+      form.form
+        ul.form__list
+          li.form__list__item
+            input.form__list__item__input.register__name(required type="name" id="name" name="user_name" placeholder='Your Name')
+          li.form__list__item
+            input.form__list__item__input.register__email(required type="email" id="mail" name="user_email" placeholder='Your Email')
+          li.form__list__item
+            input.form__list__item__input.register__password(required type="password" id="password" name="user_password" placeholder='Your Password')
+          li.form__list__item
+            input.form__list__item__input.register__password__repeat(required type="password" id="password_repeat" name="user_password" placeholder='Repeat Your Password')
+          li.form__list__item
+            input.form__list__item__button.register__button(type='submit' value='register')
+
+  .help
+    p.help__info.
+      Password must contain at least: #[br] #[span.red 8] characters #[br] #[span.red 1] uppercase letter #[br] #[span.red 1] lowercase letter #[br] #[span.red 1] numeric character.
