@@ -1,0 +1,76 @@
+.form
+{
+  width: 70.4rem;
+
+  background: transparent;
+
+  &__list
+  {
+
+    &__item
+    {
+      display: flex;
+      flex-direction: column;
+
+      margin: 3rem;
+
+      &__input
+      {
+        @extend %desc-18;
+
+        background: transparent;
+        border: 1px solid;
+        border-color: $color-text;
+        color: $color-text;
+        padding: 3.2rem 2.4rem;
+
+        width: 100%;
+
+        &::placeholder
+        {
+          color: $color-text;
+        }
+      }
+
+      &__textarea
+      {
+        @extend %desc-18;
+
+        height: 35.6rem;
+        background: transparent;
+        border: 1px solid;
+        border-color: $color-text;
+        color: $color-text;
+        padding: 3.2rem 2.4rem;
+
+        width: 100%;
+
+        &::placeholder
+        {
+          color: $color-text;
+        }
+      }
+
+      &__button
+      {
+        align-self: flex-end;
+
+        width: 18rem;
+        height: 6.1rem;
+
+        background: transparent;
+
+        border: 1px solid;
+        border-color: $color-text;
+        border-right: none;
+        border-left: none;
+
+        padding: 2rem 1.8rem;
+
+        color: $color-text;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+

@@ -10,3 +10,81 @@
 {
   color: inherit;
 }
+
+%page__main
+{
+  height: 100%;
+  width: 100%;
+
+  z-index: z('content');
+
+  display: flex;
+  flex-direction: column;
+}
+
+%page__section
+{
+  padding: 8.8rem 0;
+
+  align-self: center;
+  justify-self: center;
+}
+
+.header
+{
+  height: 39.6rem;
+  width: 100%;
+
+  position: relative;
+
+  &__bg
+  {
+    height: 100%;
+    width: 100%;
+
+    position: relative;
+
+    &__img
+    {
+      height: 100%;
+      width: 100%;
+
+      object-fit: cover;
+      object-position: top;
+    }
+
+    &__overlay
+    {
+      position: absolute;
+      top: 0;
+      left: 0;
+
+      height: 100%;
+      width: 100%;
+
+      background: #000000ca;
+    }
+  }
+
+  &__title
+  {
+    position: absolute;
+    top: 65%;
+    left: 50%;
+
+    transform: translate(
+      -50%,
+      -50%
+    );
+
+    text-align: center;
+
+    &__text
+    {
+      @extend %title-38;
+      @extend %link__center;
+
+      text-transform: uppercase;
+    }
+  }
+}

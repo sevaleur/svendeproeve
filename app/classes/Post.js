@@ -4,10 +4,10 @@ export default class Post
 {
   constructor(url, { ...object })
   {
-    this.url = url
-    this.object = { object }
-
-    this.res = this.post(this.url, this.object)
+    this.res = this.post(
+      url,
+      { object }
+    )
   }
 
   async post(url, { object })
@@ -20,7 +20,7 @@ export default class Post
       {
         headers:
         {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         }
       }
     )

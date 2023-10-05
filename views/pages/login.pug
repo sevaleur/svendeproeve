@@ -5,4 +5,26 @@ block variables
 
 block content
   .login
-    h1.login__title='Log In'
+    .header
+      .header__bg
+        img.header__bg__img(src='./assets/bg/footerbg.jpg')
+        .header__bg__overlay
+      .header__title
+        h1.header__title__text='log in'
+
+    section.login__section
+      .login__section__titles
+        h3.login__section__titles__main.
+          night#[span.red club] is members only
+        p.login__section__titles__sub='Please provide email and password to log in'
+      form.form
+        ul.form__list
+          li.form__list__item
+            input.form__list__item__input.login__email(required type="email" id="mail" name="user_email" placeholder='Email')
+          li.form__list__item
+            input.form__list__item__input.login__password(required type="password" id="password" name="user_password" placeholder='Password')
+          li.form__list__item
+            input.form__list__item__button.login__button(type='submit' value='log in')
+      .login__section__message
+        p.login__section__message__text.
+          Are you not yet a member? Do you want to be a part of our exclusive club? #[a(href='./register') #[span.red Sign up here.]]

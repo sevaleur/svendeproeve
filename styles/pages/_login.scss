@@ -1,0 +1,66 @@
+.red
+{
+  color: $color-red;
+}
+
+.login
+{
+  @extend %page__main;
+
+  .form
+  {
+    height: 27.9rem;
+
+    margin: 5rem 0 10rem 0;
+  }
+
+  &__section
+  {
+    @extend %page__section;
+
+    height: 64rem;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-evenly;
+    align-items: center;
+
+    &__titles
+    {
+      text-align: center;
+
+      &__main
+      {
+        @extend %title-24;
+
+        text-transform: uppercase;
+        letter-spacing: 0.18rem;
+      }
+
+      &__sub
+      {
+        @extend %desc-18;
+
+        margin-top: 2rem;
+        line-height: 3.24rem;
+      }
+    }
+
+    &__message
+    {
+      text-align: center;
+
+      &__text
+      {
+        @extend %desc-18;
+
+        a
+        {
+          color: $color-red;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}

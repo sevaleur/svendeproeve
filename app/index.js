@@ -3,6 +3,7 @@ import Navigation from 'components/Navigation'
 import Home from 'pages/home'
 import Blog from 'pages/blog'
 import Contact from 'pages/contact'
+import Login from 'pages/login'
 
 export default class App
 {
@@ -40,7 +41,8 @@ export default class App
     this.pages = {
       home: new Home(),
       blog: new Blog(),
-      contact: new Contact()
+      contact: new Contact(),
+      login: new Login()
     }
 
     this.page = this.pages[this.template]
@@ -54,6 +56,8 @@ export default class App
   async onChange({ url, push = true })
   {
     await this.page.hide()
+
+    document.body.scrollTo(0, 0)
 
     const req = await window.fetch(url)
 
@@ -77,9 +81,7 @@ export default class App
       this.page = this.pages[this.template]
       this.page.create()
 
-      window.scrollTo(0, 0, 'smooth')
-
-      this.navigation.createSticky(this.template)
+      this.navigation.createNavLocation(this.template)
       this.navigation.navigate(this.template)
 
       this.page.show()

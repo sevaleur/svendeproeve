@@ -94,6 +94,8 @@
 
 /*! ./Logger */
 
+/*! ./Post */
+
 /*! ./_DataView */
 
 /*! ./_Hash */
@@ -460,7 +462,7 @@
 
 /*! classes/Page */
 
-/*! classes/Post */
+/*! classes/Validation */
 
 /*! components/Navigation */
 
@@ -479,6 +481,8 @@
 /*! pages/contact */
 
 /*! pages/home */
+
+/*! pages/login */
 
 /*! tapable/lib/SyncBailHook */
 
@@ -519,6 +523,14 @@
 /*!**********************************!*\
   !*** ./app/classes/Component.js ***!
   \**********************************/
+
+/*!**********************************!*\
+  !*** ./app/pages/login/index.js ***!
+  \**********************************/
+
+/*!***********************************!*\
+  !*** ./app/classes/Validation.js ***!
+  \***********************************/
 
 /*!***********************************!*\
   !*** ./node_modules/lodash/eq.js ***!

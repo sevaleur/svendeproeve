@@ -14,37 +14,44 @@ export default class Navigation extends Component
       }
     })
 
-    this.createSticky(template)
+    this.createNavLocation(template)
     this.navigate(template)
   }
 
-  createSticky(template)
+  createNavLocation(template)
   {
     if(template === 'home')
     {
-      this.element.classList.add('home')
-      this.element.classList.remove('away')
+      const bounds = this.element.getBoundingClientRect()
 
-      let pos = this.element.getBoundingClientRect().top
-
-      window.addEventListener('scroll', () =>
-      {
-        let scroll = window.scrollY
-
-        scroll > pos
-          ? this.element.classList.add('sticky')
-          : this.element.classList.remove('sticky')
-      })
-    }
-    else
-    {
-      this.element.classList.add('away')
-      this.element.classList.remove('home')
+      const initial_location = (window.innerHeight - bounds.height) - window.scrollY
 
       gsap.to(
         this.element,
         {
-          opacity: 1.0
+          top: `${initial_location}px`
+        }
+      )
+
+      window.onscroll = () =>
+      {
+        this.location = (window.innerHeight - bounds.height) - window.scrollY
+        this.scroll = (window.scrollY + bounds.height) - window.innerHeight
+
+        this.scroll > this.location
+          ? this.element.style.top = 0
+          : this.element.style.top = `${this.location}px`
+      }
+    }
+    else
+    {
+      window.onscroll = null
+      window.scrollTo(0, 0)
+
+      gsap.to(
+        this.element,
+        {
+          top: 0
         }
       )
     }
