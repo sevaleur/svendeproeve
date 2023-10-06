@@ -1,10 +1,8 @@
 import gsap from 'gsap'
 
 import Page from 'classes/Page'
-import Validation from 'classes/Validation'
 
-
-export default class Login extends Page
+export default class Register extends Page
 {
   constructor()
   {
@@ -15,6 +13,8 @@ export default class Login extends Page
 
       }
     })
+
+    this.form = true
   }
 
   create()
@@ -26,6 +26,8 @@ export default class Login extends Page
 
   createElements()
   {
+    this.err = 'An error occured'
+
     this.input = {
       name: document.querySelector('input.register__name'),
       email: document.querySelector('input.register__email'),
@@ -33,12 +35,11 @@ export default class Login extends Page
       repeat: document.querySelector('input.register__password__repeat')
     }
 
-    this.button = document.querySelector('input.register__button')
+    this.button = document.querySelector('button.register__button')
     this.notice = document.querySelector('.register__section__titles__sub')
     this.help = document.querySelector('.help')
 
     this.createPassword()
-    this.validateInput()
   }
 
   createPassword()
@@ -68,19 +69,6 @@ export default class Login extends Page
         }
       )
     }
-  }
-
-  validateInput()
-  {
-    this.validate = new Validation(
-      'http://localhost:4000/register',
-      { ...this.input },
-      `Welcome to the club`,
-      'An error occured',
-      this.button,
-      this.notice,
-      'register'
-    )
   }
 
   show()

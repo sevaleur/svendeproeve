@@ -5,6 +5,9 @@ import Blog from 'pages/blog'
 import Contact from 'pages/contact'
 import Login from 'pages/login'
 import Register from 'pages/register'
+import Thanks from 'pages/thanks'
+
+import Validation from 'classes/Validation'
 
 export default class App
 {
@@ -13,6 +16,7 @@ export default class App
     this.createContent()
     this.createNavigation()
     this.createPages()
+    this.createValidation()
 
     this.disableScroll()
 
@@ -44,11 +48,25 @@ export default class App
       blog: new Blog(),
       contact: new Contact(),
       login: new Login(),
-      register: new Register()
+      register: new Register(),
+      thanks: new Thanks()
     }
 
     this.page = this.pages[this.template]
     this.page.create()
+  }
+
+  createValidation()
+  {
+    if(this.page.form)
+    {
+      this.validate = new Validation(
+        this.page.input,
+        this.page.err,
+        this.page.button,
+        this.page.notice
+      )
+    }
   }
 
   /*
@@ -82,6 +100,8 @@ export default class App
 
       this.page = this.pages[this.template]
       this.page.create()
+
+      this.createValidation()
 
       this.navigation.createNavLocation(this.template)
       this.navigation.navigate(this.template)
@@ -117,6 +137,9 @@ export default class App
   addEventListeners()
   {
     window.addEventListener('popstate', this.onPopState.bind(this))
+
+    if(this.page.addEventListeners)
+      this.page.addEventListeners()
   }
 
   addLinkListeners()

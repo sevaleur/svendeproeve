@@ -11,6 +11,18 @@
   top: 0;
   left: 0;
 
+  &__logout
+  {
+    @extend %desc-24;
+    @extend %link__center--hidden;
+
+    border: none;
+    background: inherit;
+
+    color: $color-text;
+    text-transform: uppercase;
+  }
+
   &__wrapper
   {
     height: 100%;

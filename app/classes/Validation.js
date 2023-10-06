@@ -1,20 +1,17 @@
 import gsap from 'gsap'
 
-import Post from './Post'
-
 export default class Validation
 {
-  constructor(url, { ...input }, res, err, button, notice, view, date = false)
+  constructor({ ...input }, err, button, notice)
   {
-    this.view = view
     this.status = {}
     this.data = {}
 
-    this.validateInput(input, notice)
-    this.submit(url, input, date, res, err, button, notice)
+    this.validateInput(input)
+    this.checkStatus(input, err, button, notice)
   }
 
-  validateInput(input, notice)
+  validateInput(input)
   {
     for(const [k, v] of Object.entries(input))
     {
@@ -61,6 +58,7 @@ export default class Validation
         case 'password':
           v.addEventListener('input', () =>
           {
+            console.log(this.status)
             let status = this.checkPassword(v.value)
             if(!status)
             {
@@ -99,7 +97,6 @@ export default class Validation
           v.addEventListener('input', () =>
           {
             const status = v.value === this.data.password
-            console.log(this.status)
             if(!status)
             {
               gsap.to(v, { borderColor: '#ff0000', duration: 0.2 })
@@ -122,7 +119,7 @@ export default class Validation
 
   checkMail(email)
   {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+    return /^[a-z0-9]+@[a-z]+\.[a-z]{2,3}$/.test(email)
   }
 
   checkPassword(password)
@@ -130,82 +127,45 @@ export default class Validation
     return /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9]).{8,}$/.test(password)
   }
 
-  submit(url, input, date, res, err, button, notice)
+  checkStatus(input, err, button, notice)
+  {
+    let valid = 0
+    this.ready = false
+
+    const toValidate = Object.keys(this.status).length
+
+    for(const v of Object.values(input))
+    {
+      v.addEventListener('input', () =>
+      {
+        for(const[k, v] of Object.entries(this.status))
+        {
+          if(v) valid++
+
+          if(valid === toValidate)
+            this.ready = true
+        }
+      })
+    }
+
+    this.submit(input, err, button, notice)
+  }
+
+  submit(input, err, button, notice)
   {
     button.addEventListener('click', (e) =>
     {
-      e.preventDefault()
-
-      let valid = 0
-      const toValidate = Object.keys(this.status).length
-
-      if(date) this.data[date] = new Date().toJSON()
-
-      for(const v of Object.values(this.status))
+      if(!this.ready)
       {
-        v ? valid++ : this.submitError(input, notice, err)
-      }
+        e.preventDefault()
 
-      if(valid === toValidate)
-      {
-        this.post = new Post(
-          url,
-          {
-            ...this.data
-          }
-        )
-
-        Promise.resolve(this.post.res)
-          .then((resolve) =>
-          {
-            if(resolve.status > 199 && resolve.status < 300)
-            {
-              for(const [k, v] of Object.entries(input))
-              {
-                let uppercase_key = k.charAt(0).toUpperCase() + k.slice(1)
-
-                v.placeholder = `Your ${uppercase_key}`
-                v.value = ''
-              }
-              notice.innerHTML = `${res}`
-            }
-            else
-            {
-              this.submitError(input, notice, err)
-            }
-          }
-          ).catch(error =>
-          {
-            for(const k of Object.keys(input))
-            {
-              gsap.to(
-                k,
-                {
-                  borderColor: '#ff0000',
-                  duration: 0.2
-                }
-              )
-            }
-            notice.innerHTML = `${err}`
-
-            console.log(error)
-          }
-        )
-      }
-      else
-      {
-        this.submitError(input, notice, err)
+        for(const [k, v] of Object.entries(this.status))
+        {
+          !v
+            ? (input[k].focus(), gsap.to(input[k], { borderColor: '#ff0000', duration: 0.2 }), notice.innerHTML = `Please fill out your ${k}`)
+            : notice.innerHTML = `${err}`
+        }
       }
     })
-  }
-
-  submitError(input, notice, err)
-  {
-    for(const [k, v] of Object.entries(this.status))
-    {
-      !v
-        ? (input[k].focus(), notice.innerHTML = `Please fill out your ${k}`)
-        : notice.innerHTML = `${err}`
-    }
   }
 }

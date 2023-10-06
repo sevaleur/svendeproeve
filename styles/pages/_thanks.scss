@@ -1,0 +1,26 @@
+.thanks
+{
+  @extend %page__main;
+
+  &__section
+  {
+    @extend %page__section;
+
+    height: 55rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__message
+    {
+      text-align: center;
+
+      &__text
+      {
+        @extend %title-32;
+
+      }
+    }
+  }
+}

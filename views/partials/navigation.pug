@@ -11,5 +11,10 @@ nav.nav
         a.nav__links__item__link.link(href='/booking' data-path='booking')='book table'
       li.nav__links__item
         a.nav__links__item__link.link(href='/contact' data-path='contact')='contact us'
-      li.nav__links__item
-        a.nav__links__item__link.link(href='/login' data-path='login')='log in'
+
+      if auth
+        form(action='/logout?_method=DELETE' method='POST')
+          button.nav__logout(type='submit')='log out'
+      else
+        li.nav__links__item
+          a.nav__links__item__link.link(href='/login' data-path='login')='log in'

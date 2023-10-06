@@ -16,15 +16,20 @@ block content
       .login__section__titles
         h3.login__section__titles__main.
           night#[span.red club] is members only
+
+      if messages.error
+        p.login__section__titles__sub=messages.error
+      else
         p.login__section__titles__sub='Please provide email and password to log in'
-      form.form
+
+      form(action='/login' method='POST').form
         ul.form__list
           li.form__list__item
-            input.form__list__item__input.login__email(required type="email" id="mail" name="user_email" placeholder='Email')
+            input.form__list__item__input.login__email(required type="email" id="mail" name="email" placeholder='Email')
           li.form__list__item
-            input.form__list__item__input.login__password(required type="password" id="password" name="user_password" placeholder='Password')
+            input.form__list__item__input.login__password(required type="password" id="password" name="password" placeholder='Password')
           li.form__list__item
-            input.form__list__item__button.login__button(type='submit' value='log in')
+            button.form__list__item__button.login__button(type='submit')='log in'
       .login__section__message
         p.login__section__message__text.
           Are you not yet a member? Do you want to be a part of our exclusive club? #[a(href='./register') #[span.red Sign up here.]]

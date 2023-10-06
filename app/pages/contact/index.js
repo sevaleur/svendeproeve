@@ -1,7 +1,6 @@
 import gsap from 'gsap'
 
 import Page from 'classes/Page'
-import Validation from 'classes/Validation'
 
 export default class Contact extends Page
 {
@@ -14,6 +13,8 @@ export default class Contact extends Page
         title: '.contact__header__title__text'
       }
     })
+
+    this.form = true
   }
 
   create()
@@ -25,32 +26,16 @@ export default class Contact extends Page
 
   createElements()
   {
+    this.err = 'An error ocurred'
+
     this.input = {
       name: document.querySelector('input.contact__name'),
       email: document.querySelector('input.contact__mail'),
       message: document.querySelector('textarea.contact__textarea')
     }
 
-    this.button = document.querySelector('.contact__button')
+    this.button = document.querySelector('button.contact__button')
     this.notice = document.querySelector('.contact__section__message__text')
-
-    this.validateInput()
-  }
-
-  validateInput()
-  {
-    let date;
-
-    this.validate = new Validation(
-      'http://localhost:4000/contact_messages',
-      { ...this.input },
-      'Your message was sent',
-      'An error ocurred',
-      this.button,
-      this.notice,
-      'contact',
-      date,
-    )
   }
 
   show()

@@ -1,0 +1,18 @@
+extends ../base.pug
+
+block variables
+  - var template = 'thanks'
+
+block content
+  .thanks
+    .header
+      .header__bg
+        img.header__bg__img(src='./assets/bg/footerbg.jpg')
+        .header__bg__overlay
+      .header__title
+        h1.header__title__text.
+         thank #[span.red you]!
+    section.thanks__section
+      .thanks__section__message
+        h3.thanks__section__message__text.
+          We'll get back to you as soon as possible#[span.red .]

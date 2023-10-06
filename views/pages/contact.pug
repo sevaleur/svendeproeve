@@ -14,15 +14,16 @@ block content
     section.contact__section
       .contact__section__message
         h3.contact__section__message__text='Please fill out the form'
-      form.form
+        
+      form(action='/contact' method='POST').form
         ul.form__list
           li.form__list__item
-            input.form__list__item__input.contact__name(required type="text" id="name" name="user_name" placeholder='Your Name')
+            input.form__list__item__input.contact__name(required type="text" id="name" name="name" placeholder='Your Name')
           li.form__list__item
-            input.form__list__item__input.contact__mail(required type="email" id="mail" name="user_email" placeholder='Your Email')
+            input.form__list__item__input.contact__mail(required type="email" id="mail" name="email" placeholder='Your Email')
           li.form__list__item
-            textarea.form__list__item__textarea.contact__textarea(required minlength='10' id="msg" name="user_message" placeholder='Your Comment')
+            textarea.form__list__item__textarea.contact__textarea(required minlength='10' id="msg" name="message" placeholder='Your Comment')
           li.form__list__item
-            input.form__list__item__button.contact__button(type='submit' value='send')
+            button.form__list__item__button.contact__button(type='submit')='send'
 
 

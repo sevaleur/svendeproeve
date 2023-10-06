@@ -17,18 +17,19 @@ block content
         h3.register__section__titles__main.
           night#[span.red club] is members only
         p.register__section__titles__sub='Fill out the form below to register a membership.'
-      form.form
+
+      form(action='/register' method='POST').form
         ul.form__list
           li.form__list__item
-            input.form__list__item__input.register__name(required type="name" id="name" name="user_name" placeholder='Your Name')
+            input.form__list__item__input.register__name(required type="name" id="name" name="name" placeholder='Your Name')
           li.form__list__item
-            input.form__list__item__input.register__email(required type="email" id="mail" name="user_email" placeholder='Your Email')
+            input.form__list__item__input.register__email(required type="email" id="mail" name="email" placeholder='Your Email')
           li.form__list__item
-            input.form__list__item__input.register__password(required type="password" id="password" name="user_password" placeholder='Your Password')
+            input.form__list__item__input.register__password(required type="password" id="password" name="password" placeholder='Your Password')
           li.form__list__item
-            input.form__list__item__input.register__password__repeat(required type="password" id="password_repeat" name="user_password" placeholder='Repeat Your Password')
+            input.form__list__item__input.register__password__repeat(required type="password" id="password_repeat" name="repeat" placeholder='Repeat Your Password')
           li.form__list__item
-            input.form__list__item__button.register__button(type='submit' value='register')
+            button.form__list__item__button.register__button(type='submit')='register'
 
   .help
     p.help__info.
