@@ -2,10 +2,17 @@ import Navigation from 'components/Navigation'
 
 import Home from 'pages/home'
 import Blog from 'pages/blog'
+import BlogPost from 'pages/blogPost'
+import Booking from 'pages/booking'
 import Contact from 'pages/contact'
 import Login from 'pages/login'
 import Register from 'pages/register'
+import User from 'pages/user'
+import Comments from 'pages/comments'
+import Reservations from 'pages/reservations'
+import Reserved from 'pages/reserved'
 import Thanks from 'pages/thanks'
+import E from 'pages/e'
 
 import Validation from 'classes/Validation'
 
@@ -46,10 +53,17 @@ export default class App
     this.pages = {
       home: new Home(),
       blog: new Blog(),
+      blogpost: new BlogPost(),
+      booking: new Booking(),
       contact: new Contact(),
       login: new Login(),
       register: new Register(),
-      thanks: new Thanks()
+      user: new User(),
+      comments: new Comments(),
+      reservations: new Reservations(),
+      reserved: new Reserved(),
+      thanks: new Thanks(),
+      error: new E()
     }
 
     this.page = this.pages[this.template]
@@ -64,7 +78,8 @@ export default class App
         this.page.input,
         this.page.err,
         this.page.button,
-        this.page.notice
+        this.page.notice,
+        this.page.id
       )
     }
   }

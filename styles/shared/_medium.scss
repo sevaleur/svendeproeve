@@ -1,0 +1,101 @@
+%medium
+{
+  font-family: $font-me;
+  font-weight: 500;
+}
+
+%medium-10
+{
+  @extend %medium;
+  font-size: 1.0rem;
+}
+
+%medium-12
+{
+  @extend %medium;
+  font-size: 1.2rem;
+}
+
+%medium-14
+{
+  @extend %medium;
+  font-size: 1.4rem;
+}
+
+%medium-16
+{
+  @extend %medium;
+  font-size: 1.6rem;
+}
+
+%medium-18
+{
+  @extend %medium;
+  font-size: 1.8rem;
+}
+
+%medium-20
+{
+  @extend %medium;
+  font-size: 2.0rem;
+}
+
+%medium-22
+{
+  @extend %medium;
+  font-size: 2.2rem;
+}
+
+%medium-24
+{
+  @extend %medium;
+  font-size: 2.4rem;
+}
+
+%medium-26
+{
+  @extend %medium;
+  font-size: 2.6rem;
+}
+
+%medium-28
+{
+  @extend %medium;
+  font-size: 2.8rem;
+}
+
+%medium-30
+{
+  @extend %medium;
+  font-size: 3.0rem;
+}
+
+%medium-32
+{
+  @extend %medium;
+  font-size: 3.2rem;
+}
+
+%medium-38
+{
+  @extend %medium;
+  font-size: 3.8rem;
+}
+
+%medium-40
+{
+  @extend %medium;
+  font-size: 4.0rem;
+}
+
+%medium-42
+{
+  @extend %medium;
+  font-size: 4.2rem;
+}
+
+%medium-44
+{
+  @extend %medium;
+  font-size: 4.4rem;
+}

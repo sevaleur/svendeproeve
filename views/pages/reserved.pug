@@ -1,0 +1,18 @@
+extends ../base.pug
+
+block variables
+  - var template = 'reserved'
+
+block content
+  .reserved
+    .header
+      .header__bg
+        img.header__bg__img(src='./assets/bg/footerbg.jpg')
+        .header__bg__overlay
+      .header__title
+        h1.header__title__text.
+         Reservation #[span.red complete].
+    section.reserved__section
+      .reserved__section__message
+        h3.reserved__section__message__text.
+          We look forward to see #[span.red you].

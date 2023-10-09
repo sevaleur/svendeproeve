@@ -1,0 +1,144 @@
+.blogpost
+{
+
+  &__section
+  {
+    padding: 9rem 22rem;
+    display: flex;
+    flex-direction: column;
+
+    &__image
+    {
+      height: 61rem;
+      width: 100%;
+
+      &__src
+      {
+        @extend %image;
+
+      }
+    }
+
+    &__text
+    {
+      padding: 5.5rem 0;
+
+      &__title
+      {
+        @extend %medium-24;
+        text-transform: uppercase;
+      }
+
+      &__sub
+      {
+        @extend %medium-18;
+        margin-top: 2rem;
+      }
+    }
+
+    &__content
+    {
+
+      &__text
+      {
+        @extend %medium-18;
+        line-height: 3.2rem;
+      }
+    }
+
+    &__comments
+    {
+      margin-top: 9.5rem;
+
+      &__title
+      {
+
+        &__text
+        {
+          @extend %bold-44;
+          text-transform: uppercase;
+        }
+      }
+
+      &__comment
+      {
+        margin: 6rem 0;
+
+        &__info
+        {
+          display: flex;
+          align-items: center;
+
+          gap: 0.5rem;
+
+          &__name
+          {
+            @extend %medium-24;
+
+          }
+
+          &__date
+          {
+            @extend %medium-18;
+
+          }
+        }
+
+        &__content
+        {
+          margin-top: 3rem;
+
+          &__text
+          {
+            @extend %medium-18;
+
+            line-height: 3.2rem;
+          }
+        }
+      }
+    }
+  }
+
+  &__form
+  {
+    height: 66.4rem;
+    margin-top: 10rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__list
+  {
+    height: 100%;
+    grid-template-rows: 1fr 2fr;
+    gap: 0 3rem;
+    margin-bottom: 2.5rem;
+  }
+
+  &__item
+  {
+    margin: 0;
+    align-self: center;
+  }
+
+  &__comment
+  {
+    height: 36.6rem;
+  }
+
+  &__grid
+  {
+
+    &__textarea
+    {
+      grid-area: 2 / 1 / -1 / -1;
+      margin: 0;
+    }
+  }
+
+  &__button
+  {
+    align-self: flex-end;
+  }
+}
+

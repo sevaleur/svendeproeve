@@ -1,0 +1,38 @@
+extends ../base.pug
+
+block variables
+  - var template = 'user'
+
+block content
+  .user
+    .header
+      .header__bg
+        img.header__bg__img(src='./assets/bg/footerbg.jpg')
+        .header__bg__overlay
+      .header__title
+        h1.header__title__text Welcome back
+        h2.user__name.red=`${user.name}`
+    section.user__section
+      h3.user__section__message__text.
+        Where do you want to go#[span.red ?]
+      .user__section__selection
+
+        a.user__section__selection__link(href=Link=`comments/${user.id}`)
+          .user__section__selection__container
+            .user__section__selection__image
+              img.user__section__selection__image__src(src='./assets/icon/chat.png' alt='comments')
+            .user__section__selection__overlay
+              .user__section__selection__overlay__count
+                p.user__section__selection__overlay__count__text=comments.comments.length
+              .user__section__selection__overlay__title
+                h3.user__section__selection__overlay__title__text='comments'
+
+        a.user__section__selection__link(href=Link=`reservations/${user.id}`)
+          .user__section__selection__container
+            .user__section__selection__image
+              img.user__section__selection__image__src(src='./assets/icon/drinks.png' alt='reservations')
+            .user__section__selection__overlay
+              .user__section__selection__overlay__count
+                p.user__section__selection__overlay__count__text=reservations.length
+              .user__section__selection__overlay__title
+                h3.user__section__selection__overlay__title__text='reservations'

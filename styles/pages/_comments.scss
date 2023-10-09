@@ -1,0 +1,110 @@
+.comments
+{
+
+  &__section
+  {
+    display: flex;
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 9rem 22rem;
+
+    &__message
+    {
+
+      &__text
+      {
+
+        @extend %regular-30;
+      }
+    }
+
+    &__comments
+    {
+      margin-top: 9.5rem;
+
+      &__title
+      {
+
+        &__text
+        {
+          @extend %bold-44;
+
+          text-transform: uppercase;
+        }
+      }
+
+      &__comment
+      {
+        position: relative;
+
+        margin: 3rem 0;
+        padding: 5rem 15rem 5rem 5rem;
+        width: 100rem;
+        height: 100%;
+
+        border: 1px solid $color-red;
+        border-radius: 5px;
+
+        &__delete
+        {
+          position: absolute;
+          top: 5rem;
+          right: 5rem;
+
+          height: 3rem;
+          width: 3rem;
+          background: none;
+          color: inherit;
+          border: none;
+          padding: 0;
+          font: inherit;
+          cursor: pointer;
+          outline: inherit;
+
+
+          cursor: pointer;
+
+          &__icon
+          {
+            @extend %image;
+          }
+        }
+
+        &__info
+        {
+          display: flex;
+          align-items: center;
+
+          gap: 0.5rem;
+
+          &__name
+          {
+            @extend %medium-24;
+
+          }
+
+          &__date
+          {
+            @extend %medium-18;
+
+          }
+        }
+
+        &__content
+        {
+          margin-top: 3rem;
+
+          &__text
+          {
+            @extend %medium-18;
+
+            line-height: 3.2rem;
+          }
+        }
+      }
+    }
+  }
+}

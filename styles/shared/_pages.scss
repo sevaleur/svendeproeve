@@ -11,6 +11,13 @@
   color: inherit;
 }
 
+%image
+{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
 %page__main
 {
   height: 100%;
@@ -81,10 +88,20 @@
 
     &__text
     {
-      @extend %title-38;
+      @extend %medium-38;
       @extend %link__center;
 
       text-transform: uppercase;
     }
   }
+}
+
+.visible
+{
+  @extend %link__center--visible;
+}
+
+.none
+{
+  @extend %link__center--hidden;
 }

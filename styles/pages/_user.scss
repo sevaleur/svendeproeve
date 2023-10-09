@@ -1,0 +1,119 @@
+.user
+{
+  @extend %page__main;
+
+  &__name
+  {
+    @extend %bold-38;
+
+    margin: 4rem 0;
+    text-transform: uppercase;
+  }
+
+  &__section
+  {
+    @extend %page__section;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10rem;
+
+    &__message
+    {
+      text-align: center;
+
+      &__text
+      {
+        @extend %medium-32;
+      }
+    }
+
+    &__selection
+    {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 10rem;
+
+      height: 100%;
+      width: 100%;
+
+      &__link
+      {
+        @extend %link__table--hidden;
+
+        height: 100%;
+        width: 100%;
+      }
+
+      &__container
+      {
+        position: relative;
+        height: 100%;
+        width: 100%;
+
+        padding: 5rem;
+      }
+
+      &__image
+      {
+        height: 20rem;
+        width: 20rem;
+        opacity: 0.5;
+        scale: 0.9;
+
+        &__src
+        {
+          @extend %image;
+        }
+      }
+
+      &__overlay
+      {
+        opacity: 0;
+
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        height: 100%;
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        transition: all 0.5s ease-in-out;
+
+        &:hover
+        {
+          opacity: 1;
+        }
+
+        &__count
+        {
+
+
+          &__text
+          {
+            @extend %bold-44;
+
+          }
+        }
+
+        &__title
+        {
+
+          &__text
+          {
+            @extend %regular-32;
+          }
+        }
+      }
+    }
+  }
+}

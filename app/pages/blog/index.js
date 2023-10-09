@@ -16,6 +16,9 @@ export default class Blog extends Page
   create()
   {
     super.create()
+
+    this.posts = document.querySelectorAll('.blog__section__post')
+    this.posts.forEach(post => { if(post.dataset.id % 2) post.classList.add('left') })
   }
 
   show()

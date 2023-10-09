@@ -1,8 +1,15 @@
 $color-background: #000000;
 $color-text: #ffffff;
 $color-red: #ff2a70;
+$color-failure: #DE350B;
+$color-success: #36B37E;
+$color-blue: #4f2aff;
 
-$font-me: 'Ubuntu, sans-serif';
+$family: 'Ubuntu, sans-serif';
+
+$font-me: $family;
+$font-bo: $family;
+$font-re: $family;
 
 $z-indexes: (
   'preloader',

@@ -1,0 +1,101 @@
+%regular
+{
+  font-family: $font-re;
+  font-weight: 400;
+}
+
+%regular-10
+{
+  @extend %regular;
+  font-size: 1.0rem;
+}
+
+%regular-12
+{
+  @extend %regular;
+  font-size: 1.2rem;
+}
+
+%regular-14
+{
+  @extend %regular;
+  font-size: 1.4rem;
+}
+
+%regular-16
+{
+  @extend %regular;
+  font-size: 1.6rem;
+}
+
+%regular-18
+{
+  @extend %regular;
+  font-size: 1.8rem;
+}
+
+%regular-20
+{
+  @extend %regular;
+  font-size: 2.0rem;
+}
+
+%regular-22
+{
+  @extend %regular;
+  font-size: 2.2rem;
+}
+
+%regular-24
+{
+  @extend %regular;
+  font-size: 2.4rem;
+}
+
+%regular-26
+{
+  @extend %regular;
+  font-size: 2.6rem;
+}
+
+%regular-28
+{
+  @extend %regular;
+  font-size: 2.8rem;
+}
+
+%regular-30
+{
+  @extend %regular;
+  font-size: 3.0rem;
+}
+
+%regular-32
+{
+  @extend %regular;
+  font-size: 3.2rem;
+}
+
+%regular-38
+{
+  @extend %regular;
+  font-size: 3.8rem;
+}
+
+%regular-40
+{
+  @extend %regular;
+  font-size: 4.0rem;
+}
+
+%regular-42
+{
+  @extend %regular;
+  font-size: 4.2rem;
+}
+
+%regular-44
+{
+  @extend %regular;
+  font-size: 4.4rem;
+}

@@ -44,3 +44,39 @@ block content
               h3.home__welcome__sections__section__overlay__title__text='bar'
             .home__welcome__sections__section__overlay__desc
               p.home__welcome__sections__section__overlay__desc__text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultrices risus ac magna porttitor blandit. Duis vulputate sagittis magna, pulvinar interdum ipsum sollicitudin in. Ut nec urna porta, imperdiet ante ut, luctus felis. Aenean finibus lectus sit amet libero iaculis.'
+
+    section.home__events
+      .home__events__title
+        h2.home__events__title__text='Events of the month'
+
+      .home__events__cards
+        each e in events
+          .home__events__cards__card
+            .home__events__cards__card__img
+              img.home__events__cards__card__img__src(src=e.asset.url alt=e.title)
+            .home__events__cards__card__overlay
+              .home__events__cards__card__overlay__title
+                h3.home__events__cards__card__overlay__title__text=e.title
+              .home__events__cards__card__overlay__desc
+                p.home__events__cards__card__overlay__desc__text=e.description
+            .home__events__cards__card__info
+                p.home__events__cards__card__info__date=`${new Date(e.date).toLocaleDateString(undefined, { month: 'short', day: 'numeric' } ).replace(/\./g, ' ') }`
+                p.home__events__cards__card__info__clock=`${new Date(e.date).toLocaleTimeString( 'en-US', { hour: 'numeric', minute: 'numeric' })}`
+                p.home__events__cards__card__info__location=e.location
+                a.home__events__cards__card__info__button(href='') Book now
+
+      .home__events__indicators
+        .home__events__indicators__indicator
+        .home__events__indicators__indicator.a_s
+        .home__events__indicators__indicator
+
+    section.home__gallery
+      .home__gallery__title
+        h2.home__gallery__title__text='Night Club Gallery'
+
+      .home__gallery__studio
+        each img in gallery
+          .home__gallery__studio__img
+            img.home__gallery__studio__img__src(src=img.asset.url alt=img.description)
+
+

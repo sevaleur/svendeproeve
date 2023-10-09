@@ -16,7 +16,7 @@
 
       &__input
       {
-        @extend %desc-18;
+        @extend %regular-18;
 
         background: transparent;
         border: 1px solid;
@@ -26,15 +26,24 @@
 
         width: 100%;
 
+        &:focus
+        {
+          outline: none;
+          border-color: inherit;
+        }
+
         &::placeholder
         {
           color: $color-text;
         }
+
+        &::-webkit-inner-spin-button { display: none; }
+        &::-webkit-calendar-picker-indicator { background: $color-text; }
       }
 
       &__textarea
       {
-        @extend %desc-18;
+        @extend %regular-18;
 
         height: 35.6rem;
         background: transparent;
@@ -42,6 +51,7 @@
         border-color: $color-text;
         color: $color-text;
         padding: 3.2rem 2.4rem;
+        resize: vertical;
 
         width: 100%;
 
@@ -53,6 +63,8 @@
 
       &__button
       {
+        @extend %medium-18;
+
         align-self: flex-end;
 
         width: 18rem;
@@ -74,5 +86,28 @@
       }
     }
   }
+
+  &__wide
+  {
+    width: 144rem;
+    background: transparent;
+
+    &__list
+    {
+      width: 100%;
+
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+    }
+
+    &__title
+    {
+      @extend %bold-44;
+
+      text-transform: uppercase;
+    }
+  }
 }
+
 

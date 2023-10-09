@@ -40,7 +40,7 @@ html
 
 body
 {
-  @extend %desc-16;
+  @extend %regular-16;
 
   font-family: $font-me;
 }
@@ -57,6 +57,7 @@ img
   opacity: 0;
   transition: opacity .5s ease;
   vertical-align: middle;
+  pointer-events: none;
 
   &.loaded
   {
@@ -64,7 +65,12 @@ img
   }
 }
 
-.content
+.blue
 {
+  color: $color-blue;
+}
 
+.red
+{
+  color: $color-red;
 }

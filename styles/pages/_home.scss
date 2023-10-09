@@ -18,9 +18,7 @@
 
       &__img
       {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
+        @extend %image;
       }
     }
 
@@ -35,14 +33,12 @@
 
       &__main
       {
-        height: 100%;
-        width: 100%;
-        object-fit: cover;
+        @extend %image;
       }
 
       &__text
       {
-        @extend %title-32;
+        @extend %medium-32;
 
         width: 100%;
         letter-spacing: 3rem;
@@ -73,7 +69,7 @@
 
       &__text
       {
-        @extend %title-38;
+        @extend %medium-38;
         @extend %link__center;
 
         text-transform: uppercase;
@@ -102,9 +98,7 @@
 
         &__img
         {
-          height: 100%;
-          width: 100%;
-          object-fit: cover;
+          @extend %image;
         }
 
         &__overlay
@@ -146,9 +140,7 @@
 
             &__img
             {
-              height: 100%;
-              width: 100%;
-              object-fit: cover;
+              @extend %image;
             }
           }
 
@@ -158,7 +150,7 @@
 
             &__text
             {
-              @extend %title-20;
+              @extend %bold-20;
 
               text-transform: uppercase;
             }
@@ -172,11 +164,208 @@
 
             &__text
             {
-              @extend %desc-14;
+              @extend %regular-14;
 
               line-height: 2.2rem;
             }
           }
+        }
+      }
+    }
+  }
+
+  &__events
+  {
+    position: relative;
+    margin: 15rem 0;
+
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow: hidden;
+
+    &__title
+    {
+      text-align: center;
+
+      &__text
+      {
+        @extend %medium-38;
+        @extend %link__center;
+
+        text-transform: uppercase;
+      }
+    }
+
+    &__cards
+    {
+      height: 100%;
+      width: 100%;
+
+      padding: 10rem 24rem;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      gap: 3rem;
+
+
+      &__card
+      {
+        position: relative;
+
+        &__img
+        {
+          height: 49.7rem;
+          width: 70.8rem;
+
+          &__src
+          {
+            @extend %image;
+          }
+        }
+
+        &__info
+        {
+          display: flex;
+          align-items: center;
+          width: 100%;
+          background: $color-red;
+          padding: 1rem 2.4rem;
+
+          &__clock
+          {
+            margin: 0 2.5rem;
+          }
+
+          &__clock,
+          &__location,
+          &__date,
+          &__button,
+          {
+            @extend %medium-20;
+          }
+
+          &__button
+          {
+            justify-self: flex-end;
+            align-self: flex-end;
+
+            margin-left: 20rem;
+            text-decoration: underline;
+          }
+        }
+
+
+        &__overlay
+        {
+          position: absolute;
+          bottom: 3rem;
+          left: 0;
+
+          height: 50%;
+          width: 100%;
+
+          opacity: 0.0;
+
+          padding: 1rem 2rem;
+
+          background: linear-gradient(
+            0deg,
+            rgba(245,245,245,0) 0%,
+            rgba(0,0,0,1) 50%,
+            rgba(0,0,0,0.29744397759103647) 100%);
+
+            &__title
+            {
+              margin-bottom: 2rem;
+
+              &__text
+              {
+                @extend %bold-30;
+                text-transform: uppercase;
+              }
+            }
+
+            &__desc
+            {
+
+              &__text
+              {
+                @extend %regular-16;
+              }
+            }
+        }
+      }
+    }
+
+    &__indicators
+    {
+      display: flex;
+      justify-content: space-evenly;
+      width: 9rem;
+
+      &__indicator
+      {
+        background: $color-text;
+        height: 2rem;
+        width: 2rem;
+
+        cursor: pointer;
+
+        transition: all 0.2s ease-in-out;
+      }
+    }
+  }
+
+  &__gallery
+  {
+    position: relative;
+    margin: 15rem 0;
+
+    height: 106.9rem;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    overflow: hidden;
+
+    &__title
+    {
+      text-align: center;
+
+      &__text
+      {
+        @extend %medium-38;
+        @extend %link__center;
+
+        text-transform: uppercase;
+      }
+    }
+
+    &__studio
+    {
+      display: flex;
+      flex-flow: row wrap;
+
+      height: 100%;
+      width: 100%;
+
+      &__img
+      {
+        height: 32.8rem;
+        width: 41.6rem;
+
+        &__src
+        {
+          @extend %image;
         }
       }
     }

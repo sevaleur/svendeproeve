@@ -13,6 +13,8 @@ nav.nav
         a.nav__links__item__link.link(href='/contact' data-path='contact')='contact us'
 
       if auth
+        li.nav__links__item
+          a.nav__links__item__link.link(href=Link=`/user/${user.id}` data-path='user')='Myclub'
         form(action='/logout?_method=DELETE' method='POST')
           button.nav__logout(type='submit')='log out'
       else

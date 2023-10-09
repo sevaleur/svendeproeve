@@ -13,7 +13,7 @@
 
   &__logout
   {
-    @extend %desc-24;
+    @extend %medium-24;
     @extend %link__center--hidden;
 
     border: none;
@@ -21,6 +21,8 @@
 
     color: $color-text;
     text-transform: uppercase;
+
+    cursor: pointer;
   }
 
   &__wrapper
@@ -59,7 +61,7 @@
 
       &__link
       {
-        @extend %desc-24;
+        @extend %medium-24;
 
         text-transform: uppercase;
       }

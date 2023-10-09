@@ -1,0 +1,36 @@
+extends ../base.pug
+
+block variables
+  - var template = 'reservations'
+
+block content
+  .reservations
+    .header
+      .header__bg
+        img.header__bg__img(src='./assets/bg/footerbg.jpg')
+        .header__bg__overlay
+      .header__title
+        h1.header__title__text.
+          your #[span.red reservations].
+    section.reservations__section
+      .reservations__section__message
+        h3.reservations__section__message__text.
+          a toast for the good times to come#[span.red .]
+
+      each r, i in reservations
+        .reservations__section__rs
+          .reservations__section__rs__info
+            h3.reservations__section__rs__info__name=r.name
+            p.reservations__section__rs__info__date.red=`Reserved: ${new Date(r.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' } ).replace(/\./g, ' ') }`
+          .reservations__section__rs__content
+            h3.reservations__section__rs__content__title Table #[span.red :]
+            .reservations__section__rs__content__text=r.table
+          .reservations__section__rs__content
+            h3.reservations__section__rs__content__title No of guests #[span.red :]
+            .reservations__section__rs__content__text=r.guests
+          form(action='/reservations?_method=DELETE' method='POST')
+            input(type="hidden", name="rs" value=r.id)
+            input(type="hidden", name="uid" value=user.id)
+            button.reservations__section__rs__delete(type='submit')
+              img.reservations__section__rs__delete__icon(src='./assets/icon/delete.png')
+

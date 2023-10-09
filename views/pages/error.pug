@@ -1,0 +1,18 @@
+extends ../base.pug
+
+block variables
+  - var template = 'error'
+
+block content
+  .error
+    .header
+      .header__bg
+        img.header__bg__img(src='./assets/bg/footerbg.jpg')
+        .header__bg__overlay
+      .header__title
+        h1.header__title__text.
+          #[span.red we] apologize!
+    section.error__section
+      .error__section__message
+        h3.error__section__message__text.
+          An error ocurred, thank you for your patience#[span.red .]

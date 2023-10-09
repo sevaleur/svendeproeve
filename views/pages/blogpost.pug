@@ -1,0 +1,55 @@
+extends ../base.pug
+
+block variables
+  - var template = 'blogpost'
+
+block content
+  .blogpost
+    .header
+      .header__bg
+        img.header__bg__img(src='./assets/bg/footerbg.jpg')
+        .header__bg__overlay
+      .header__title
+        h1.header__title__text blog Post
+
+    section.blogpost__section
+      .blogpost__section__image
+        img.blogpost__section__image__src(src=post.asset.url alt=post.title)
+      .blogpost__section__text
+        h2.blogpost__section__text__title=post.title
+        p.blogpost__section__text__sub.red=`By: ${post.author} / ${comments.length} Comments / 16 Nov 2018`
+      .blogpost__section__content
+        p.blogpost__section__content__text=post.content
+
+      .blogpost__section__comments
+          .blogpost__section__comments__title
+            h2.blogpost__section__comments__title__text=`${comments.length} comments`
+
+      each comment in comments
+        .blogpost__section__comments__comment
+          .blogpost__section__comments__comment__info
+            h3.blogpost__section__comments__comment__info__name=`${comment.name} - `
+            p.blogpost__section__comments__comment__info__date.red=`Posted ${new Date(comment.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' } ).replace(/\./g, ' ') }`
+          .blogpost__section__comments__comment__content
+            .blogpost__section__comments__comment__content__text=comment.content
+
+      if !auth
+        .noauth
+          .noauth__text
+            h3.noauth__text__main.
+              night#[span.red club] is members only
+            p.noauth__text__sub You need to be a registered member to comment our blog.
+          a.noauth__button(href='/login')='log in'
+      else
+        form(action='/blogpost' method='POST').form__wide.blogpost__form
+          .form__title
+            h2.form__wide__title Leave a comment
+          ul.form__wide__list.blogpost__list
+            input(type="hidden", name='uid' value=`${uid}`)
+            li.form__list__item.blogpost__item
+              input.form__list__item__input.blogpost__name(required type="name" id="name" name="name" placeholder='Your Name')
+            li.form__list__item.blogpost__item
+                input.form__list__item__input.blogpost__email(required type="email" id="email" name="email" placeholder='Your Email')
+            li.form__list__item.blogpost__grid__textarea
+              textarea.form__list__item__input.blogpost__comment(required resize='vertical' minlength='10' id="msg" name="message" placeholder='Your Comment')
+          button.form__list__item__button.blogpost__button(type='submit')='submit'

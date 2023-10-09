@@ -6,11 +6,13 @@
 @import './utils/responsive';
 @import './utils/splitting';
 
-@import './shared/titles';
-@import './shared/desc';
+@import './shared/bold';
+@import './shared/medium';
+@import './shared/regular';
 @import './shared/links';
 @import './shared/pages';
 @import './shared/form';
+@import './shared/noauth';
 
 @import './base/fonts';
 @import './base/base';
@@ -21,8 +23,14 @@
 
 @import './pages/home';
 @import './pages/blog';
+@import './pages/blogpost';
+@import './pages/comments';
 @import './pages/booking';
+@import './pages/reservations';
+@import './pages/reserved';
 @import './pages/contact';
+@import './pages/thanks';
 @import './pages/login';
 @import './pages/register';
-@import './pages/thanks';
+@import './pages/user';
+@import './pages/error';

@@ -5,4 +5,49 @@ block variables
 
 block content
   .booking
-    h1.booking__title='Booking'
+    .header
+      .header__bg
+        img.header__bg__img(src='./assets/bg/footerbg.jpg')
+        .header__bg__overlay
+      .header__title
+        h1.header__title__text book table
+
+    section.booking__section
+        if !auth
+          .noauth
+            .noauth__text
+              h3.noauth__text__main.
+                night#[span.red club] is members only
+              p.noauth__text__sub You need to be a registered member to book a table.
+            a.noauth__button(href='/login')='log in'
+        else
+          .booking__section__auth
+            .booking__section__auth__tables
+              each v, i in positions
+                .booking__section__auth__tables__table(data-id=i + 1)
+                  img.booking__section__auth__tables__table__img(src=tables[v - 1] alt='table' + i)
+                  .booking__section__auth__tables__table__overlay
+                    p.booking__section__auth__tables__table__overlay__text=i + 1
+
+            form(action='/booking' method='POST').form__wide.booking__flex
+              .form__title.booking__flex__start.booking__title
+                h2.form__wide__title Book a table
+              ul.form__wide__list.booking__grid
+                .booking__grid__left.booking__flex__column
+                  li.form__list__item.booking__item
+                    input.form__list__item__input.booking__name(required type="name" id="name" name="name" placeholder='Your Name')
+                  li.form__list__item.booking__item
+                    input.form__list__item__input.booking__table(required type="number" id="table" name="table" min='1' max='15' placeholder='Table Number')
+                  li.form__list__item.booking__item
+                    input.form__list__item__input.booking__date(required type="date" id="date" name="date" min=date placeholder='Select Date')
+                .booking__grid__right.booking__flex__column
+                  li.form__list__item.booking__item
+                    input.form__list__item__input.booking__email(required type="email" id="email" name="email" placeholder='Your Email')
+                  li.form__list__item.booking__item
+                    input.form__list__item__input.booking__guests(required type="number" id="guests" name="guests" placeholder='Number of Guests')
+                  li.form__list__item.booking__item
+                    input.form__list__item__input.booking__phone(required type="number" id="phone" name="phone" placeholder='Your Contact Number')
+                li.form__list__item.booking__grid__textarea
+                  textarea.form__list__item__input.booking__comment(required minlength='10' id="msg" name="message" placeholder='Your Comment')
+
+              button.form__list__item__button.booking__button.booking__flex__end(type='submit')='reserve'

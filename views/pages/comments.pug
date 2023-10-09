@@ -1,0 +1,31 @@
+extends ../base.pug
+
+block variables
+  - var template = 'comments'
+
+block content
+  .comments
+    .header
+      .header__bg
+        img.header__bg__img(src='./assets/bg/footerbg.jpg')
+        .header__bg__overlay
+      .header__title
+        h1.header__title__text.
+          your #[span.red comments].
+    section.comments__section
+      .comments__section__message
+        h3.comments__section__message__text.
+          a trip down memorylane#[span.red .]
+
+      each comment, index in comments.comments
+        .comments__section__comments__comment
+          .comments__section__comments__comment__info
+            h3.comments__section__comments__comment__info__name=`${comment.name} - `
+            p.comments__section__comments__comment__info__date.red=`Posted ${new Date(comment.date).toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' } ).replace(/\./g, ' ') }`
+          .comments__section__comments__comment__content
+            .comments__section__comments__comment__content__text=comment.content
+          form(action='/comments?_method=DELETE' method='POST')
+            input(type="hidden", name="comment" value=comment.id)
+            input(type="hidden", name="uid" value=user.id)
+            button.comments__section__comments__comment__delete(type='submit')
+              img.comments__section__comments__comment__delete__icon(src='./assets/icon/delete.png')

@@ -72,3 +72,151 @@
     }
   }
 }
+
+%link__center--visible
+{
+  @extend %link__wrapper;
+
+  display: inline-block;
+
+  &:after
+  {
+    @extend %link__line__center;
+    @extend %link__line__center--visible;
+  }
+}
+
+/*
+  Top link line // TABLE SELECT.
+*/
+
+%link__line__top__menu {
+  content: '';
+  position: absolute;
+  top: -1rem;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,1) 20%,
+    rgba(255,42,112,1) 50%,
+    rgba(0,0,0,1) 80%);
+  transition: transform 0.5s ease-in-out;
+}
+
+%link__line__top__menu--visible {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+%link__line__top__menu--hidden {
+  transform: scaleX(0);
+  transform-origin: right center;
+}
+
+/*
+  Bottom link line // TABLE SELECT.
+*/
+
+%link__line__btm__menu {
+  content: '';
+  position: absolute;
+  bottom: -1rem;
+  right: 0;
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,1) 20%,
+    rgba(255,42,112,1) 50%,
+    rgba(0,0,0,1) 80%);
+  transition: transform 0.5s ease-in-out;
+}
+
+%link__line__btm__menu--visible {
+  transform: scaleX(1);
+  transform-origin: right center;
+}
+
+%link__line__btm__menu--hidden {
+  transform: scaleX(0);
+  transform-origin: left center;
+}
+
+/*
+  COMPLETE TABLE SELECT.
+*/
+
+%link__table {
+  @extend %link__wrapper;
+
+  display: inline-block;
+
+  &:before
+  {
+    @extend %link__line__top__menu;
+    @extend %link__line__top__menu--visible;
+  }
+
+  &:after {
+    @extend %link__line__btm__menu;
+    @extend %link__line__btm__menu--visible;
+  }
+
+  &:hover {
+    &:before
+    {
+      @extend %link__line__top__menu--hidden;
+    }
+
+    &:after {
+      @extend %link__line__btm__menu--hidden;
+    }
+  }
+}
+
+%link__table--hidden {
+  @extend %link__wrapper;
+
+  display: inline-block;
+
+  &:before
+  {
+    @extend %link__line__top__menu;
+    @extend %link__line__top__menu--hidden;
+  }
+
+  &:after {
+    @extend %link__line__btm__menu;
+    @extend %link__line__btm__menu--hidden;
+  }
+
+  &:hover {
+    &:before
+    {
+      @extend %link__line__top__menu--visible;
+    }
+
+    &:after {
+      @extend %link__line__btm__menu--visible;
+    }
+  }
+}
+
+%link__table--visible {
+  @extend %link__wrapper;
+
+  display: inline-block;
+
+  &:before
+  {
+    @extend %link__line__top__menu;
+    @extend %link__line__top__menu--visible;
+  }
+
+  &:after {
+    @extend %link__line__btm__menu;
+    @extend %link__line__btm__menu--visible;
+  }
+}

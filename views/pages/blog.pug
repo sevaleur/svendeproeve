@@ -5,4 +5,30 @@ block variables
 
 block content
   .blog
-    h1.blog__title='Blog'
+    .header
+      .header__bg
+        img.header__bg__img(src='./assets/bg/footerbg.jpg')
+        .header__bg__overlay
+      .header__title
+        h1.header__title__text blog
+
+    section.blog__section
+      each p, i in blogpost
+        if p.id === 2
+          .blog__section__post.reverse(data-id=p.id)
+            .blog__section__post__image.reverse__image
+                img.blog__section__post__image__src(src=p.asset.url alt=p.title)
+            .blog__section__post__text.reverse__text
+              h2.blog__section__post__text__title=p.title
+              p.blog__section__post__text__sub.red=`By: ${p.author} / 3 Comments / 16 Nov 2018`
+              p.blog__section__post__text__desc=p.content.length > 500 ? p.content.substr(0, 499) : p.content
+              a.blog__section__post__text__button.form__list__item__button(href=Link=`/blogpost/${p.id}` data-id=p.id) read more
+        else
+          .blog__section__post(data-id=p.id)
+            .blog__section__post__image
+              img.blog__section__post__image__src(src=p.asset.url alt=p.title)
+            .blog__section__post__text
+              h2.blog__section__post__text__title=p.title
+              p.blog__section__post__text__sub.red=`By: ${p.author} / 3 comments / 16 Nov 2018`
+              p.blog__section__post__text__desc=p.content.length > 500 ? p.content.substr(0, 499) : p.content
+              a.blog__section__post__text__button.form__list__item__button(href=Link=`/blogpost/${p.id}` data-id=p.id) read more
