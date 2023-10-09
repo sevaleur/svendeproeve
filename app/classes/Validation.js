@@ -244,7 +244,6 @@ export default class Validation
 
   submit(input, err, button, notice)
   {
-    console.log(this.status)
     button.addEventListener('click', (e) =>
     {
       if(!this.ready)

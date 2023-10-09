@@ -243,10 +243,8 @@
             margin: 0 2.5rem;
           }
 
-          &__clock,
-          &__location,
-          &__date,
-          &__button,
+          &__clock, &__location,
+          &__date, &__button,
           {
             @extend %medium-20;
           }
@@ -325,21 +323,20 @@
 
   &__gallery
   {
-    position: relative;
-    margin: 15rem 0;
-
-    height: 106.9rem;
+    height: 100%;
     width: 100%;
+
+    margin: 15rem 0;
 
     display: flex;
     flex-direction: column;
-    align-items: center;
 
     overflow: hidden;
 
     &__title
     {
       text-align: center;
+      margin-bottom: 5rem;
 
       &__text
       {
@@ -352,21 +349,70 @@
 
     &__studio
     {
-      display: flex;
+      display:flex;
       flex-flow: row wrap;
+      justify-content: center;
 
-      height: 100%;
       width: 100%;
+      height: 65.6rem;
+
+      overflow: hidden;
 
       &__img
       {
         height: 32.8rem;
-        width: 41.6rem;
+        flex-shrink: 2;
+
 
         &__src
         {
-          @extend %image;
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
         }
+      }
+    }
+  }
+
+  &__videos
+  {
+    margin: 15rem 0;
+
+    height: 100%;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+
+    &__title
+    {
+      text-align: center;
+      margin-bottom: 5rem;
+
+      &__text
+      {
+        @extend %medium-38;
+        @extend %link__center;
+
+        text-transform: uppercase;
+      }
+    }
+
+    &__video
+    {
+      align-self: center;
+      height: 60.8rem;
+      width: 100%;
+
+      src
+      {
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
       }
     }
   }

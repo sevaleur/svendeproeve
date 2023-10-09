@@ -15,8 +15,6 @@ export default class Page
       ...viewElements,
       images: 'img'
     }
-
-    this.auth = false
   }
 
   create()

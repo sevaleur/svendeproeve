@@ -7,7 +7,7 @@ const api = require('./api_config')
 
 const express = require('express')
 const axios = require('axios')
-const axiosInstance = axios.create({ baseURL: process.env.BASE_URL })
+const axiosInstance = axios.create({ baseURL: api.BASE_URL })
 
 const app = express()
 const passport = require('passport')
@@ -31,7 +31,7 @@ app.use(flash())
 app.use(session({
   resave: false,
   saveUninitialized: false,
-  secret: process.env.USER_SECRET,
+  secret: api.USER_SECRET,
   cookie: {
     secure: false,
     sameSite: 'lax',
@@ -62,7 +62,6 @@ axiosInstance.interceptors.request.use(
   (config) =>
   {
     const token = localStorage.getItem('accessToken')
-
     if(token)
     {
       config.headers.Authorization = `Bearer ${token}`
@@ -151,10 +150,10 @@ app.use((req, res, next) => {
 app.get('/', async(req, res) =>
 {
   const data = await Promise.all([
-    axiosInstance.get(`${process.env.BASE_URL}/events`),
-    axiosInstance.get(`${process.env.BASE_URL}/gallery`),
-    axiosInstance.get(`${process.env.BASE_URL}/testimonials`),
-    axiosInstance.get(`${process.env.BASE_URL}/blogposts`)
+    axiosInstance.get(`${api.BASE_URL}/events`),
+    axiosInstance.get(`${api.BASE_URL}/gallery`),
+    axiosInstance.get(`${api.BASE_URL}/testimonials`),
+    axiosInstance.get(`${api.BASE_URL}/blogposts`)
   ]).then(res =>
   {
     return {
@@ -164,7 +163,6 @@ app.get('/', async(req, res) =>
       blogPost: res[3].data,
     }
   })
-  console.log(data)
 
   res.render('pages/home', {
     ...data
@@ -178,8 +176,8 @@ app.get('/', async(req, res) =>
 app.get('/blog', async(req, res) =>
 {
   const data = await Promise.all([
-    axiosInstance.get(`${process.env.BASE_URL}/blogposts`),
-    axiosInstance.get(`${process.env.BASE_URL}/comments`)
+    axiosInstance.get(`${api.BASE_URL}/blogposts`),
+    axiosInstance.get(`${api.BASE_URL}/comments`)
   ]).then(res =>
     {
       return {
@@ -198,14 +196,14 @@ app.get('/blogpost/:uid', async(req, res) =>
 {
   res.locals.uid = req.params.uid
   const post = await axiosInstance.get(
-    `${process.env.BASE_URL}/blogposts/${req.params.uid}`
+    `${api.BASE_URL}/blogposts/${req.params.uid}`
   ).then(
     res =>
     { return res.data }
   )
 
   const comments = await axiosInstance.get(
-    `${process.env.BASE_URL}/comments?blogpostId=${req.params.uid}`
+    `${api.BASE_URL}/comments?blogpostId=${req.params.uid}`
   ).then(
     res =>
     { return res.data.slice().reverse() }
@@ -287,18 +285,14 @@ app.get('/user/:uid', auth, async(req, res) =>
   try
   {
     const reservations = await axiosInstance.get(
-      `${process.env.BASE_URL}/reservations?userId=${req.user.id}`
+      `${api.BASE_URL}/reservations?userId=${req.user.id}`
     ).then(res =>
       { return res.data } )
-
-    console.log(reservations)
 
     const comments = await axiosInstance.get(
-      `${process.env.BASE_URL}/users/${req.user.id}?embed=comments`
+      `${api.BASE_URL}/users/${req.user.id}?embed=comments`
     ).then(res =>
       { return res.data } )
-
-    console.log(comments)
 
     res.render('pages/user', {
       comments,
@@ -317,11 +311,9 @@ app.get('/reservations/:uid', auth, async(req, res) =>
   try
   {
     const reservations = await axiosInstance.get(
-      `${process.env.BASE_URL}/reservations?userId=${req.user.id}`
+      `${api.BASE_URL}/reservations?userId=${req.user.id}`
     ).then(res =>
       { return res.data } )
-
-    console.log(reservations)
 
     res.render('pages/reservations', {
       reservations
@@ -339,16 +331,14 @@ app.get('/comments/:uid', auth, async(req, res) =>
   try
   {
     const comments = await axiosInstance.get(
-      `${process.env.BASE_URL}/users/${req.user.id}?embed=comments`
+      `${api.BASE_URL}/users/${req.user.id}?embed=comments`
     ).then(res =>
       { return res.data } )
 
     const images = await axiosInstance.get(
-      `${process.env.BASE_URL}/blogposts`
+      `${api.BASE_URL}/blogposts`
     ).then(res =>
       { return res.data } )
-
-    console.log(comments, images)
 
     res.render('pages/comments', {
       comments,
@@ -385,7 +375,7 @@ app.post('/register', async(req, res) =>
   try
   {
     axiosInstance.post(
-      `${process.env.BASE_URL}/register`,
+      `${api.BASE_URL}/register`,
       {
         name: req.body.name,
         email: req.body.email,
@@ -410,7 +400,7 @@ app.post('/contact', async(req, res) =>
   try
   {
     axiosInstance.post(
-      `${process.env.BASE_URL}/contact_messages`,
+      `${api.BASE_URL}/contact_messages`,
       {
         name: req.body.name,
         email: req.body.email,
@@ -439,7 +429,7 @@ app.post('/booking', async(req, res) =>
     const date = new Date(req.body.date).toISOString()
 
     axiosInstance.post(
-      `${process.env.BASE_URL}/reservations`,
+      `${api.BASE_URL}/reservations`,
       {
         userId: req.user.id,
         name: req.body.name,
@@ -471,7 +461,7 @@ app.post('/blogpost', async(req, res) =>
     const date = new Date().toJSON()
 
     axiosInstance.post(
-      `${process.env.BASE_URL}/comments`,
+      `${api.BASE_URL}/comments`,
       {
         blogpostId: req.body.uid,
         userId: req.user.id,
@@ -501,7 +491,7 @@ app.delete('/comments', async (req, res) =>
   try
   {
     await axiosInstance.delete(
-      `${process.env.BASE_URL}/comments/${req.body.comment}`,
+      `${api.BASE_URL}/comments/${req.body.comment}`,
       api.headers
     ).then(
       res =>
@@ -521,7 +511,7 @@ app.delete('/reservations', async (req, res) =>
   try
   {
     await axiosInstance.delete(
-      `${process.env.BASE_URL}/reservations/${req.body.rs}`,
+      `${api.BASE_URL}/reservations/${req.body.rs}`,
       api.headers
     ).then(
       res =>
@@ -567,7 +557,7 @@ app.listen(process.env.PORT, () =>
 const login = async (email, password) =>
 {
   return response = await axios.post(
-    `${process.env.BASE_URL}/login`,
+    `${api.BASE_URL}/login`,
     {
       email,
       password
@@ -608,10 +598,6 @@ function initPassport(passport)
 
     if(data.user.email === undefined)
       return done(null, false, { message: 'No user with that email' })
-
-    /* if(data.user.password !== password)
-      return done(null, false, { message: data }) */
-    console.log(res)
 
     localStorage.setItem('accessToken', data.accessToken)
     return done(null, res)

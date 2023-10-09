@@ -2,8 +2,6 @@ import gsap from 'gsap'
 
 import Page from 'classes/Page'
 
-import Show from 'animations/Show'
-
 import img_0 from 'assets/bg/header_bg_1.jpg'
 import img_1 from 'assets/bg/header_bg_2.jpg'
 
@@ -48,9 +46,6 @@ export default class Home extends Page
     this.e_t = document.querySelectorAll('.home__events__cards__card__overlay__title')
     this.e_d = document.querySelectorAll('.home__events__cards__card__overlay__desc')
     this.e_b = document.querySelectorAll('.home__events__cards__card__overlay__button')
-
-    this.images = document.querySelectorAll('.home__events__cards__card__img')
-    this.indicators = document.querySelectorAll('.home__events__indicators__indicator')
 
     this.createAnimations()
   }
@@ -144,50 +139,6 @@ export default class Home extends Page
     })
   }
 
-  /* createSlider()
-  {
-    this.indicators.forEach((i, index) =>
-    {
-      if(i.classList.contains('a_s'))
-      {
-        this.former = i
-        this.formerIndex = index
-      }
-
-      i.addEventListener('click', (e) =>
-      {
-        if(this.former != e.target)
-        {
-          this.former.classList.remove('a_s')
-          e.target.classList.add('a_s')
-
-          this.former = e.target
-        }
-      })
-    })
-
-    this.half = window.innerWidth / 2
-
-    this.images.forEach((im, i) =>
-    {
-      let bounds = im.getBoundingClientRect()
-      console.log(bounds)
-
-      if(bounds.left > -this.half && bounds.right < this.half)
-      {
-        im.classList.add('visible')
-        im.classList.remove('hidden')
-      }
-      else
-      {
-
-        im.classList.add('hidden')
-        im.classList.remove('visible')
-      }
-
-    })
-  } */
-
   show()
   {
     super.show()
@@ -218,16 +169,10 @@ export default class Home extends Page
         duration: 0.5
       }, 'end'
     )
-
-    /* const a = document.querySelector('.home__header__titles__text')
-    this.an_in = new Show(a)
-    this.an_in.init() */
   }
 
   hide()
   {
     super.hide()
-/*
-    this.an_in.reset() */
   }
 }

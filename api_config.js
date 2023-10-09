@@ -1,4 +1,5 @@
 const api = {
+  BASE_URL: 'http://localhost:4000',
   oneday: 1000 * 60 * 60 * 24,
   headers:
   {
@@ -21,7 +22,9 @@ const api = {
         '1', '1', '2', '1', '3',
         '1', '1', '2', '1', '3',
       ]
-  }
+  },
+  PORT: 3000,
+  USER_SECRET:'RCiGQJ9'
 }
 
 module.exports = api
